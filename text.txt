@@ -1,0 +1,530 @@
+// cara agar tab view navigation bisa full screen
+
+import React from 'react';
+import {View, Text, StyleSheet, Button, ScrollView} from 'react-native';
+
+const About = ({navigation}) => {
+  return (
+    <ScrollView contentContainerStyle={{flexGrow: 1}}>
+      <View style={styles.container}>
+        <Text style={styles.title}>About Screeen</Text>
+        <Button
+          style={styles.button}
+          title="Home"
+          onPress={() => navigation.navigate('Home')}></Button>
+      </View>
+    </ScrollView>
+  );
+};
+
+const styles = StyleSheet.create({
+  container: {
+    backgroundColor: 'white',
+    display: 'flex',
+    justifyContent: 'center',
+    flexDirection: 'column',
+    alignItems: 'center',
+    flex: 1,
+    flexGrow: 1,
+  },
+  title: {
+    fontSize: 20,
+    fontWeight: 'bold',
+  },
+  button: {
+    marginTop: 5,
+    paddingRight: 5,
+    paddingLeft: 5,
+    borderRadius: 10,
+  },
+});
+
+export default About;
+
+
+
+
+{/* multi slider distance */}
+              <View style={{flex: 1}}>
+              <ScrollView
+                showsVerticalScrollIndicator={false}
+                style={{flex: 1}}>
+                <View style={{paddingHorizontal: 0, marginBottom: 40}}>
+                  <Text
+                    style={{
+                      color: colors.blackPrimary,
+                      fontSize: 16,
+                      fontWeight: '500',
+                    }}>
+                    Distance
+                  </Text>
+                  <View style={{paddingHorizontal: 20}}>
+                    <MultiSlider
+                      sliderLength={330}
+                      postfix="km"
+                      values={[3, 10]}
+                      min={1}
+                      max={20}
+                      // onValuesChange={values => console.log(values)}
+                      markerOffsetY={20}
+                      selectedStyle={{
+                        backgroundColor: colors.greenPrimary,
+                      }}
+                      trackStyle={{
+                        height: 10,
+                        borderRadius: 10,
+                        backgroundColor: colors.grayBg,
+                      }}
+                      customMarker={e => {
+                        return (
+                          <View
+                            style={{
+                              height: 60,
+                              alignItems: 'center',
+                              justifyContent: 'center',
+                            }}>
+                            <View
+                              style={{
+                                height: 30,
+                                width: 30,
+                                borderRadius: 15,
+                                borderWidth: 4,
+                                borderColor: colors.whitePrimary,
+                                backgroundColor: colors.greenPrimary,
+                                shadowColor: '#000000',
+                                shadowOffset: {
+                                  width: 0,
+                                  height: 3,
+                                },
+                                shadowRadius: 1,
+                                shadowOpacity: 0.1,
+                              }}></View>
+                            <Text
+                              style={{
+                                marginTop: 5,
+                                color: colors.blackPrimary,
+                                fontSize: 16,
+                              }}>
+                              {e.currentValue} km
+                            </Text>
+                          </View>
+                        );
+                      }}></MultiSlider>
+                  </View>
+                </View>
+
+                {/* delivery time */}
+                <View style={{paddingHorizontal: 0, marginBottom: 40}}>
+                  <Text
+                    style={{
+                      color: colors.blackPrimary,
+                      fontSize: 16,
+                      fontWeight: '500',
+                      marginBottom: 10,
+                    }}>
+                    Delivery Time
+                  </Text>
+                  <View
+                    style={{
+                      display: 'flex',
+                      justifyContent: 'center',
+                      alignItems: 'center',
+                      flexDirection: 'row',
+                    }}>
+                    <TouchableOpacity
+                      onPress={() => setTimeDelivery(10)}
+                      style={{
+                        backgroundColor:
+                          timeDelivery == 10
+                            ? colors.greenPrimary
+                            : colors.grayBg,
+                        borderRadius: 5,
+                        marginHorizontal: 3,
+                        paddingHorizontal: 5,
+                        paddingVertical: 10,
+                        flex: 1,
+                      }}>
+                      <Text
+                        style={{
+                          color:
+                            timeDelivery == 10
+                              ? colors.whitePrimary
+                              : colors.blackSecondary,
+                          textAlign: 'center',
+                          fontSize: 18,
+                        }}>
+                        10 Min
+                      </Text>
+                    </TouchableOpacity>
+                    <TouchableOpacity
+                      onPress={() => setTimeDelivery(20)}
+                      style={{
+                        backgroundColor:
+                          timeDelivery == 20
+                            ? colors.greenPrimary
+                            : colors.grayBg,
+                        borderRadius: 5,
+                        marginHorizontal: 3,
+                        paddingHorizontal: 5,
+                        paddingVertical: 10,
+                        flex: 1,
+                      }}>
+                      <Text
+                        style={{
+                          color:
+                            timeDelivery == 20
+                              ? colors.whitePrimary
+                              : colors.blackSecondary,
+                          textAlign: 'center',
+                          fontSize: 18,
+                        }}>
+                        20 Min
+                      </Text>
+                    </TouchableOpacity>
+                    <TouchableOpacity
+                      onPress={() => setTimeDelivery(30)}
+                      style={{
+                        backgroundColor:
+                          timeDelivery == 30
+                            ? colors.greenPrimary
+                            : colors.grayBg,
+                        borderRadius: 5,
+                        marginHorizontal: 3,
+                        paddingHorizontal: 5,
+                        paddingVertical: 10,
+                        flex: 1,
+                      }}>
+                      <Text
+                        style={{
+                          color:
+                            timeDelivery == 30
+                              ? colors.whitePrimary
+                              : colors.blackSecondary,
+                          textAlign: 'center',
+                          fontSize: 18,
+                        }}>
+                        30 Min
+                      </Text>
+                    </TouchableOpacity>
+                  </View>
+                </View>
+
+                {/* multi slider pricing */}
+                <View style={{paddingHorizontal: 0, marginBottom: 40}}>
+                  <Text
+                    style={{
+                      color: colors.blackPrimary,
+                      fontSize: 16,
+                      fontWeight: '500',
+                    }}>
+                    Pricing Range
+                  </Text>
+                  <View style={{paddingHorizontal: 20}}>
+                    <MultiSlider
+                      sliderLength={330}
+                      // p="km"
+                      values={[3, 100]}
+                      min={1}
+                      max={100}
+                      // onValuesChange={values => console.log(values)}
+                      markerOffsetY={20}
+                      selectedStyle={{
+                        backgroundColor: colors.greenPrimary,
+                      }}
+                      trackStyle={{
+                        height: 10,
+                        borderRadius: 10,
+                        backgroundColor: colors.grayBg,
+                      }}
+                      customMarker={e => {
+                        return (
+                          <View
+                            style={{
+                              height: 60,
+                              alignItems: 'center',
+                              justifyContent: 'center',
+                            }}>
+                            <View
+                              style={{
+                                height: 30,
+                                width: 30,
+                                borderRadius: 15,
+                                borderWidth: 4,
+                                borderColor: colors.whitePrimary,
+                                backgroundColor: colors.greenPrimary,
+                                shadowColor: '#000000',
+                                shadowOffset: {
+                                  width: 0,
+                                  height: 3,
+                                },
+                                shadowRadius: 1,
+                                shadowOpacity: 0.1,
+                              }}></View>
+                            <Text
+                              style={{
+                                marginTop: 5,
+                                color: colors.blackPrimary,
+                                fontSize: 16,
+                              }}>
+                              $ {e.currentValue}.0
+                            </Text>
+                          </View>
+                        );
+                      }}></MultiSlider>
+                  </View>
+                </View>
+
+                {/* rating */}
+                <View style={{paddingHorizontal: 0, marginBottom: 40}}>
+                  <Text
+                    style={{
+                      color: colors.blackPrimary,
+                      fontSize: 16,
+                      fontWeight: '500',
+                      marginBottom: 10,
+                    }}>
+                    Rating
+                  </Text>
+                  <View
+                    style={{
+                      display: 'flex',
+                      justifyContent: 'center',
+                      alignItems: 'center',
+                      flexDirection: 'row',
+                    }}>
+                    <TouchableOpacity
+                      onPress={() => setRaring(1)}
+                      style={{
+                        backgroundColor:
+                          rating == 1 ? colors.greenPrimary : colors.grayBg,
+                        borderRadius: 5,
+                        marginHorizontal: 3,
+                        paddingHorizontal: 5,
+                        paddingVertical: 10,
+                        justifyContent: 'center',
+                        flexDirection: 'row',
+                        flex: 1,
+                        alignItems: 'center',
+                      }}>
+                      <Text
+                        style={{
+                          color:
+                            rating == 1
+                              ? colors.whitePrimary
+                              : colors.blackSecondary,
+                          textAlign: 'center',
+                          fontSize: 18,
+                          marginRight: 3,
+                        }}>
+                        1
+                      </Text>
+                      <Image
+                        source={StarIcon}
+                        style={{
+                          width: 20,
+                          height: 20,
+                          tintColor:
+                            rating == 1 ? colors.whitePrimary : colors.border,
+                        }}></Image>
+                    </TouchableOpacity>
+                    <TouchableOpacity
+                      onPress={() => setRaring(2)}
+                      style={{
+                        backgroundColor:
+                          rating == 2 ? colors.greenPrimary : colors.grayBg,
+                        borderRadius: 5,
+                        marginHorizontal: 3,
+                        paddingHorizontal: 5,
+                        paddingVertical: 10,
+                        justifyContent: 'center',
+                        flexDirection: 'row',
+                        flex: 1,
+                        alignItems: 'center',
+                      }}>
+                      <Text
+                        style={{
+                          color:
+                            rating == 2
+                              ? colors.whitePrimary
+                              : colors.blackSecondary,
+                          textAlign: 'center',
+                          fontSize: 18,
+                          marginRight: 3,
+                        }}>
+                        2
+                      </Text>
+                      <Image
+                        source={StarIcon}
+                        style={{
+                          width: 20,
+                          height: 20,
+                          tintColor:
+                            rating == 2 ? colors.whitePrimary : colors.border,
+                        }}></Image>
+                    </TouchableOpacity>
+                    <TouchableOpacity
+                      onPress={() => setRaring(3)}
+                      style={{
+                        backgroundColor:
+                          rating == 3 ? colors.greenPrimary : colors.grayBg,
+                        borderRadius: 5,
+                        marginHorizontal: 3,
+                        paddingHorizontal: 5,
+                        paddingVertical: 10,
+                        justifyContent: 'center',
+                        flexDirection: 'row',
+                        flex: 1,
+                        alignItems: 'center',
+                      }}>
+                      <Text
+                        style={{
+                          color:
+                            rating == 3
+                              ? colors.whitePrimary
+                              : colors.blackSecondary,
+                          textAlign: 'center',
+                          fontSize: 18,
+                          marginRight: 3,
+                        }}>
+                        3
+                      </Text>
+                      <Image
+                        source={StarIcon}
+                        style={{
+                          width: 20,
+                          height: 20,
+                          tintColor:
+                            rating == 3 ? colors.whitePrimary : colors.border,
+                        }}></Image>
+                    </TouchableOpacity>
+                    <TouchableOpacity
+                      onPress={() => setRaring(4)}
+                      style={{
+                        backgroundColor:
+                          rating == 4 ? colors.greenPrimary : colors.grayBg,
+                        borderRadius: 5,
+                        marginHorizontal: 3,
+                        paddingHorizontal: 5,
+                        paddingVertical: 10,
+                        justifyContent: 'center',
+                        flexDirection: 'row',
+                        flex: 1,
+                        alignItems: 'center',
+                      }}>
+                      <Text
+                        style={{
+                          color:
+                            rating == 4
+                              ? colors.whitePrimary
+                              : colors.blackSecondary,
+                          textAlign: 'center',
+                          fontSize: 18,
+                          marginRight: 3,
+                        }}>
+                        4
+                      </Text>
+                      <Image
+                        source={StarIcon}
+                        style={{
+                          width: 20,
+                          height: 20,
+                          tintColor:
+                            rating == 4 ? colors.whitePrimary : colors.border,
+                        }}></Image>
+                    </TouchableOpacity>
+                    <TouchableOpacity
+                      onPress={() => setRaring(5)}
+                      style={{
+                        backgroundColor:
+                          rating == 5 ? colors.greenPrimary : colors.grayBg,
+                        borderRadius: 5,
+                        marginHorizontal: 3,
+                        paddingHorizontal: 5,
+                        paddingVertical: 10,
+                        justifyContent: 'center',
+                        flexDirection: 'row',
+                        flex: 1,
+                        alignItems: 'center',
+                      }}>
+                      <Text
+                        style={{
+                          color:
+                            rating == 5
+                              ? colors.whitePrimary
+                              : colors.blackSecondary,
+                          textAlign: 'center',
+                          fontSize: 18,
+                          marginRight: 3,
+                        }}>
+                        5
+                      </Text>
+                      <Image
+                        source={StarIcon}
+                        style={{
+                          width: 20,
+                          height: 20,
+                          tintColor:
+                            rating == 5 ? colors.whitePrimary : colors.border,
+                        }}></Image>
+                    </TouchableOpacity>
+                  </View>
+                </View>
+
+                {/* tags */}
+                <View style={{paddingHorizontal: 0, marginBottom: 40}}>
+                  <Text
+                    style={{
+                      color: colors.blackPrimary,
+                      fontSize: 16,
+                      fontWeight: '500',
+                      marginBottom: 10,
+                    }}>
+                    Tags
+                  </Text>
+                  <View
+                    style={{
+                      display: 'flex',
+                      justifyContent: 'center',
+                      alignItems: 'center',
+                      flexDirection: 'row',
+                      flexWrap: 'wrap',
+                    }}>
+                    {tags.map((data, index) => {
+                      return (
+                        <TouchableOpacity
+                          key={index}
+                          onPress={() => setTag(data.name)}
+                          style={{
+                            backgroundColor:
+                              tag == data.name
+                                ? colors.greenPrimary
+                                : colors.grayBg,
+                            borderRadius: 5,
+                            marginHorizontal: 3,
+                            paddingHorizontal: 5,
+                            paddingVertical: 10,
+                            justifyContent: 'center',
+                            flexDirection: 'row',
+                            flex: 1,
+                            alignItems: 'center',
+                            marginBottom: 3,
+                          }}>
+                          <Text
+                            style={{
+                              color:
+                                tag == data.name
+                                  ? colors.whitePrimary
+                                  : colors.blackSecondary,
+                              textAlign: 'center',
+                              fontSize: 18,
+                              marginRight: 3,
+                            }}>
+                            {data.name}
+                          </Text>
+                        </TouchableOpacity>
+                      );
+                    })}
+                  </View>
+                </View>
+              </ScrollView>
+              </View>
